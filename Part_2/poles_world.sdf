@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="poles_world">
+
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="ignition::gazebo::systems::Physics"/>
+
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="ignition::gazebo::systems::UserCommands"/>
+
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="ignition::gazebo::systems::SceneBroadcaster"/>
+
+    <plugin
+      filename="ignition-gazebo-sensors-system"
+      name="ignition::gazebo::systems::Sensors"/>
+
+    <plugin
+      filename="ignition-gazebo-imu-system"
+      name="ignition::gazebo::systems::Imu"/>
+
+    <light type="directional" name="sun">
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>20 20</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Square vertex 1: front-right -->
+    <include>
+      <uri>model://pole51</uri>
+      <name>pole51</name>
+      <pose>2.0 2.0 0 0 0 0</pose>
+    </include>
+
+    <!-- Square vertex 2: front-left -->
+    <include>
+      <uri>model://pole52</uri>
+      <name>pole52</name>
+      <pose>-2.0 2.0 0 0 0 0</pose>
+    </include>
+
+    <!-- Square vertex 3: rear-left -->
+    <include>
+      <uri>model://pole53</uri>
+      <name>pole53</name>
+      <pose>-2.0 -2.0 0 0 0 0</pose>
+    </include>
+
+    <!-- Square vertex 4: rear-right -->
+    <include>
+      <uri>model://pole54</uri>
+      <name>pole54</name>
+      <pose>2.0 -2.0 0 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>
